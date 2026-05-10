@@ -12,7 +12,7 @@ const Place=()=>{
     });
 
     useEffect(() => {document.title = "Places List";
-        getAllPlaces("http://localhost:8080/place/all")
+        getAllPlaces(`${import.meta.env.VITE_URL_API}/place/all`);
     }, []);
     const getAllPlaces=async (url)=> {
         await axios.get(url)
@@ -30,7 +30,7 @@ const Place=()=>{
     const addPlace=async()=>{
         try {
             const response = await axios.post(
-                "http://localhost:8080/place/add",
+                `${import.meta.env.VITE_URL_API}/place/add`,
                 newPlace,
                 {
 

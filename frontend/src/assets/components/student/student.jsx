@@ -13,7 +13,7 @@ const Student=()=>{
     });
 
     useEffect(() => {document.title = "Students List";
-        getAllStudents("http://localhost:8080/student/all");
+        getAllStudents(`${import.meta.env.VITE_API_URL}/student/all`);
     }, []);
 
 
@@ -34,7 +34,7 @@ const Student=()=>{
     const addStudent=async()=>{
         try {
             const response = await axios.post(
-                "http://localhost:8080/student/add",
+                `${import.meta.env.VITE_API_URL}/student/add`,
                 newStudent,
                 {
                     headers: {

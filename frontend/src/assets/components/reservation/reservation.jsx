@@ -12,7 +12,7 @@ const Reservation = () => {
     });
 
     useEffect(() => {document.title = "Reservations List";
-        fetch("http://localhost:8080/reservation/all")
+        fetch(`${import.meta.env.VITE_API_URL}/reservation/all`)
             .then(res => res.json())
             .then(data => setReservations(data))
             .catch(err => console.error("Fetch error:", err));
@@ -31,7 +31,7 @@ const Reservation = () => {
 
 
 
-        fetch("http://localhost:8080/reservation/add", {
+        fetch(`${import.meta.env.VITE_API_URL}/reservation/add`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ const Reservation = () => {
             })
             .then(() => {
 
-                return fetch("http://localhost:8080/reservation/all");
+                return fetch(`${import.meta.env.VITE_API_URL}/reservation/all`);
             })
             .then(res => res.json())
             .then(data => {
