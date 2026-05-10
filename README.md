@@ -1,4 +1,5 @@
-This repo is a practice for DevOps prcoessesMarkdown
+This repo is a practice for DevOps processes.
+
 # SWE304 Project 3 - Library CRUD Application
 
 **Author:** Beyza Komiş
@@ -38,39 +39,3 @@ To spin up the entire application locally using the pre-configured containers:
 3. Run the following command:
    ```bash
    docker compose up -d
-The frontend will be available at http://localhost:80 and the backend API at http://localhost:8080.
-
-Database Persistence
-The PostgreSQL database utilizes a named Docker volume (postgres_data). Running docker compose down will destroy the containers, but your database records will be safely preserved for the next startup. To completely wipe the database, run docker compose down -v.
-
-🔐 Environment Variables
-Production variables are securely managed via GitHub Secrets and injected at runtime. Required secrets include:
-
-DOCKERHUB_USERNAME / DOCKERHUB_TOKEN
-
-EC2_HOST / EC2_USER / EC2_SSH_KEY
-
-POSTGRES_USER / POSTGRES_PASSWORD / POSTGRES_DB
-
-VITE_API_URL
-
-
-***
-
-### How to use the Image for Proj3
-
-Depending on whether you mean the **Architecture Block Diagram from the PDF** or your **Docker Images**, here is how to use both for your project submission:
-
-**1. If you mean the Block Diagram from `pro3.pdf`:**
-To include the "Figure 1. Project 3 block diagram" in your README to secure top marks for documentation:
-1. Open your `pro3.pdf` and take a screenshot of the flowchart.
-2. Save the screenshot as `architecture.png`.
-3. Create a new folder in your repository root called `docs` and place the image inside (`docs/architecture.png`).
-4. Add this markdown line to the `README.md` under the Architecture section to display it:
-   `![Project Architecture Diagram](docs/architecture.png)`
-
-**2. If you mean the Docker Images (`librarycrud` and `librarycrud-frontend`):**
-You do not need to manually move or manage these images! Your project is already perfectly utilizing them:
-* **On GitHub:** The Action pipeline automatically uses the `Dockerfile` in each folder to build the application into an image and pushes it to DockerHub.
-* **On EC2:** When `deploy.sh` runs, the EC2 instance automatically reaches out to DockerHub, downloads your finished images, and runs them via `docker-compose.yml`. 
-
