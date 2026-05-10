@@ -3,7 +3,7 @@ services:
 
   frontend: 
     image: ${DOCKERHUB_USERNAME}/librarycrud-frontend:latest
-    container_name: rontend_app
+    container_name: frontend_app
     ports:
       - "80:80"
     depends_on:
