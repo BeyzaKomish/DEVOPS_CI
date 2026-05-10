@@ -6,7 +6,6 @@ import './student.css';
 
 
 const Student=()=>{
-    const apiUrl = import.meta.env.VITE_API_URL;
     const [students,setStudents ]=useState([]);
     const [newStudent, setNewStudent] = useState({
         name: "",
@@ -14,7 +13,7 @@ const Student=()=>{
     });
 
     useEffect(() => {document.title = "Students List";
-        getAllStudents(`${apiUrl}/student/all`);
+        getAllStudents(`http://35.171.26.157:8080/student/all`);
     }, []);
 
 
@@ -35,7 +34,7 @@ const Student=()=>{
     const addStudent=async()=>{
         try {
             const response = await axios.post(
-                `${apiUrl}/student/add`,
+                `http://35.171.26.157:8080/student/add`,
                 newStudent,
                 {
                     headers: {

@@ -3,11 +3,10 @@ import axios from "axios";
 
 const Pdf = () =>
 {
-    const apiUrl = import.meta.env.VITE_API_URL;
 
 
     useEffect(() => {document.title = "PDF";
-        getAllStudents(`${apiUrl}/student/pdf`);
+        getAllStudents(`http://35.171.26.157:8080/student/pdf`);
     }, []);
 
 

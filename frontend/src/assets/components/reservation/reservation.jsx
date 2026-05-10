@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import './reservation.css';
 
 const Reservation = () => {
-    const apiUrl = import.meta.env.VITE_API_URL;
 
     const [reservations, setReservations] = useState([]);
     const [showForm, setShowForm] = useState(false);
@@ -14,7 +13,7 @@ const Reservation = () => {
     });
 
     useEffect(() => {document.title = "Reservations List";
-        fetch(`${apiUrl}/reservation/all`)
+        fetch(`http://35.171.26.157:8080/reservation/all`)
             .then(res => res.json())
             .then(data => setReservations(data))
             .catch(err => console.error("Fetch error:", err));
@@ -33,7 +32,7 @@ const Reservation = () => {
 
 
 
-        fetch(`${apiUrl}/reservation/add`, {
+        fetch(`http://35.171.26.157:8080/reservation/add`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

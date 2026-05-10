@@ -3,7 +3,6 @@ import axios from 'axios'
 import './place.css'
 
 const Place=()=>{
-    const apiUrl = import.meta.env.VITE_API_URL;
 
     const [places,setPlaces]=useState([]); 
     const [newPlace, setNewPlace] = useState({
@@ -14,7 +13,7 @@ const Place=()=>{
     });
 
     useEffect(() => {document.title = "Places List";
-        getAllPlaces(`${apiUrl}/place/all`);
+        getAllPlaces(`http://35.171.26.157:8080/place/all`);
     }, []);
     const getAllPlaces=async (url)=> {
         await axios.get(url)
@@ -32,7 +31,7 @@ const Place=()=>{
     const addPlace=async()=>{
         try {
             const response = await axios.post(
-                `${apiUrl}/place/add`,
+                `http://35.171.26.157:8080/place/add`,
                 newPlace,
                 {
 
