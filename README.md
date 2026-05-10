@@ -26,7 +26,7 @@ The deployment process is fully automated. Whenever a developer pushes to the `m
 
 ## 🛠️ Local Development Setup
 
-### Prerequisites
+### Prerequisitess
 * Docker & Docker Desktop installed
 * Java 21 & Gradle installed (for backend development)
 * Node.js v20+ (for frontend development)
