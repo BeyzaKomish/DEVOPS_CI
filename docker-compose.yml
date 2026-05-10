@@ -1,0 +1,41 @@
+version: '3.8'
+services:
+
+  frontend: 
+    image: ${DOCKERHUB_USERNAME}/librarycrud-frontend:latest
+    container_name: rontend_app
+    ports:
+      - "80:80"
+    depends_on:
+      - webapp
+    restart: always
+  webapp:
+    image: ${DOCKERHUB_USERNAME}/librarycrud:latest
+    container_name: java_crud_app
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/${POSTGRES_DB}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+    depends_on:
+      - db   
+    restart: always
+  
+  db:
+    image: postgres:latest
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: always
+  
+volumes:
+  postgres_data:
+
+ 
