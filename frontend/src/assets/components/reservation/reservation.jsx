@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './reservation.css';
 
 const Reservation = () => {
+    const apiUrl = import.meta.env.VITE_API_URL;
+
     const [reservations, setReservations] = useState([]);
     const [showForm, setShowForm] = useState(false);
     const [form, setForm] = useState({
@@ -12,7 +14,7 @@ const Reservation = () => {
     });
 
     useEffect(() => {document.title = "Reservations List";
-        fetch(`${import.meta.env.VITE_API_URL}/reservation/all`)
+        fetch(`${apiUrl}/reservation/all`)
             .then(res => res.json())
             .then(data => setReservations(data))
             .catch(err => console.error("Fetch error:", err));
@@ -31,7 +33,7 @@ const Reservation = () => {
 
 
 
-        fetch(`${import.meta.env.VITE_API_URL}/reservation/add`, {
+        fetch(`${apiUrl}/reservation/add`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

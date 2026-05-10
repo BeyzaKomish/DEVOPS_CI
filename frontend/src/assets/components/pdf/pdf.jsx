@@ -1,13 +1,13 @@
 import {useEffect} from "react";
 import axios from "axios";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 const Pdf = () =>
 {
+    const apiUrl = import.meta.env.VITE_API_URL;
+
+
     useEffect(() => {document.title = "PDF";
-        getAllStudents(`${import.meta.env.VITE_API_URL}/student/pdf`);
+        getAllStudents(`${apiUrl}/student/pdf`);
     }, []);
 
 
